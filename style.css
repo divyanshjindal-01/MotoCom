@@ -1,0 +1,181 @@
+button#addRider {
+            background-color: #4CAF50; /* Green */
+            border: none;
+            color: white;
+            padding: 15px 32px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 4px 2px;
+            cursor: pointer;
+        }
+
+button#emergencyAlert {
+            background-color: #f44336; /* Red */
+            border: none;
+            color: white;
+            padding: 15px 32px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 4px 2px;
+            cursor: pointer;
+        }
+button#emergencyRecording {
+            background-color: #008CBA; /* Blue */
+            border: none;
+            color: white;
+            padding: 15px 32px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 4px 2px;
+            cursor: pointer;
+        }
+#emergencyfeatures {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 10px;
+        }
+#disconnectedRIder {
+            width: 100px;
+            height: 100px;
+            background-color: #f0f0f0;
+            border-radius: 50%;
+            margin: 20px auto;
+        }
+#emergency {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            background-color: #f9f9f9;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+#TRANSCRIPT {
+            /* margin-left: 4rem; */
+            padding: 10rem;
+            background-color: #f1f1f1;
+            border-radius: 5px;
+        }
+/* #writtenAlert {
+            font-size: 16px;
+            color: #333;
+        } */
+#rider {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+        }
+#rider button {
+            background-color: #4CAF50; /* Green */
+            border: none;
+            color: white;
+            padding: 15px 32px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 4px 2px;
+            cursor: pointer;
+        }
+body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 20px;
+        }
+main {
+            max-width: 800px;
+            margin: auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            display: flex;
+            justify-content: space-evenly;
+        }
+footer {
+            text-align: center;
+            padding: 10px;
+            background-color: #f1f1f1;
+            border-top: 1px solid #ccc;
+            margin-top: 20px;
+        }
+.slider-container {
+    width: 100%;
+    max-width: 100%;
+    overflow-x: auto;
+    scroll-behavior: smooth;
+    border: 2px solid #ccc;
+    padding: 10px;
+}
+
+.slider-track {
+    display: inline-flex;
+    gap: 10px;
+    flex-direction: row-reverse;
+}
+
+.rider-card img {
+    width: 200px;
+    height: 200px;
+    border-radius: 10px;
+    border: 1px solid #888;
+    object-fit: cover;
+}
+
+button#addRider {
+    margin: 10px;
+    padding: 6px 12px;
+    font-size: 16px;
+    height: 10rem;
+    width: 10rem;
+    flex-shrink: 0;
+}
+
+.newRider{
+    border-radius: 50%;
+    margin: 20px auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 10px;
+
+}
+.rider-card{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 10px;
+}
+.remove-btn {
+  margin-top: 10px;
+  background-color: #28a745;
+  color: white;
+  border: none;
+  padding: 8px 12px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+
+
+
+
+.rider-img {
+  width: 200px;
+  cursor: pointer;
+  border-radius: 10px;
+}
+
+.rider-img:active {
+  opacity: 0.6;
+  transform: scale(0.96);
+}

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="style.css">
+
+</head>
+<body>
+<main>
+<div id="emergency">
+    <div id="disconnectedRIder"></div>
+    <div id="emergencyfeatures">
+        <button id="emergencyAlert"><i class="fa-solid fa-bell"></i>GROUP ALERT!!! </button>
+        <button id="emergencyRecording"><i class="fa-solid fa-cassette-tape"></i> EMERGENCY RECORDING </button>
+    </div>
+</div>
+
+<div id="TRANSCRIPT">
+    <!-- <P id="writtenAlert"></P> -->
+    <audio controls style="display: block;" id="audiorec" ></audio>
+
+</div>
+
+</main>
+<footer>
+    <div class="slider-container">
+        <div id="rider" class="slider-track">
+<!-- temp  -->
+            <!-- <button id="recordBtn"><img src="https://img.freepik.com/premium-vector/rider-logo-with-concept-men-using-helmets_811548-166.jpg" height="200" width="200" /></button>
+    <button class="rem-btn">remove rider <i class="fa-solid fa-user-minus"></i></button> -->
+<!-- temp  -->
+        <button id="addRider">add rider <i class="fa-solid fa-user-plus"></i></button>
+        </div>
+    </div>
+
+</footer>
+
+</body>
+<script src="main.js"></script>
+<script src="voicesystem.js"></script>
+</html>
