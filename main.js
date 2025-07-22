@@ -26,29 +26,30 @@ addRider.addEventListener("click", () => {
   newRider.id = `ridernumber-${idToUse}`;
   console.log("Added:", newRider.id);
 
-  newRider.innerHTML = `
-    <button class = "recordBtn">
-    <p id="rec_text"> 🎤 Start Recording </p>
-    </button>
-    <button class="rem-btn">Remove Rider <i class="fa-solid fa-user-minus"></i></button>
-  `;
+newRider.innerHTML = `
+  <button class="recordBtn">
+  <p contenteditable > Rider name</p>
+  <p id="rec_text-${idToUse}"> 🎤 Start Recording </p>
+  </button>
+  <button class="rem-btn">Remove Rider <i class="fa-solid fa-user-minus"></i></button>
+<!-- <audio controls autoplay id="audiorec-${idToUse}" style="display: block;"></audio> this is to be uncomment -->
+`;
 
-    setTimeout(() => {
-      let elementBtn = document.getElementById(`ridernumber-${idToUse}`);
-      let recordBtn = document.getElementById('rec_text');
-      let rembtn = document.getElementsByClassName('rem-btn');
+setTimeout(() => {
+  let recordBtn = document.getElementById(`rec_text-${idToUse}`);
+  let recordBtnWrapper = newRider.querySelector('.recordBtn');
+  // let audio = document.getElementById(`audiorec-${idToUse}`); this is to be uncomment
 
-    const sharingElement = new CustomEvent("receiving_recordBtn", {
-      detail: {
-        element: elementBtn,
-        element1: recordBtn,
-        element2: rembtn,
-        riderId: idToUse,
-        childElement: true,
-      }
-    });
-    document.dispatchEvent(sharingElement);
-  }, 1000);
+  const sharingElement = new CustomEvent("receiving_recordBtn", {
+    detail: {
+      element: recordBtnWrapper,   // button that is clicked
+      element1: recordBtn,         // <p> tag for text update
+      // element2: audio,             // audio player for this rider    this is to be uncomment
+      riderId: idToUse,
+    }
+  });
+  document.dispatchEvent(sharingElement);
+}, 100);
 
   const removeRider = newRider.querySelector(".rem-btn");
   removeRider.addEventListener("click", () => {

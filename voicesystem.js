@@ -1,51 +1,52 @@
 const rider_img = document.getElementById("rider.img");
 const audiorec = document.getElementById("audiorec");
 
+let isRecording = false;
 let mediaRecorder;
 let audioChunks = [];
-let isRecording = false;
+let stream;
 
-document.addEventListener("receiving_recordBtn",(e)=>{
-const btn = e.detail.element;
-let recordBtn = e.detail.element1;
-const btn_p = e.detail.element2;
+document.addEventListener("receiving_recordBtn", (e) => {
+  const btn = e.detail.element;       // The button (container)
+  const textElement = e.detail.element1;  // <p> element inside button
+  const audioPlayer = e.detail.element2;  // Specific audio element
+  const riderId = e.detail.riderId;
 
+  if (!btn) return;
 
-console.log("received btn: ", e.detail.riderId);
+  btn.addEventListener("click", async () => {
+    if (!isRecording) {
+      try {
+        stream = await navigator.mediaDevices.getUserMedia({ audio: true });
+        mediaRecorder = new MediaRecorder(stream);
+        audioChunks = [];
 
- if (btn) {
-    btn.addEventListener("click", () => {
-      if (!isRecording) {
+        mediaRecorder.ondataavailable = (event) => {
+          audioChunks.push(event.data);
+        };
+
+        mediaRecorder.onstop = () => {
+          const audioBlob = new Blob(audioChunks, { type: "audio/webm" });
+          const audioURL = URL.createObjectURL(audioBlob);
+          // audioPlayer.src = audioURL; this is to be uncomment
+          audiorec.src = audioURL;
+          audioChunks = [];
+
+          stream.getTracks().forEach((track) => track.stop());
+        };
+
         mediaRecorder.start();
         isRecording = true;
-        recordBtn.innerText = "🛑 Stop Recording";
-        console.log("🎤 Recording Start",e.detail.riderId);
-      } else {
-        mediaRecorder.stop();
-        isRecording = false;
-        recordBtn.innerText= "🎤 Start Recording";
-        console.log("🛑 Recording Stop",e.detail.riderId);
+        textElement.innerText = "🛑 Stop Recording";
+        console.log("🎤 Recording Start", riderId);
+      } catch (err) {
+        console.error("Microphone error: ", err);
       }
-    });
-    }});
-
-
-navigator.mediaDevices.getUserMedia({audio: true})
-.then(stream=>{
-  mediaRecorder = new MediaRecorder(stream);
-
-mediaRecorder.ondataavailable = event =>{
-  audioChunks.push(event.data);
-};
-mediaRecorder.onstop = ()=>{
-  const audioBlob = new Blob(audioChunks,{type: "audio/webm"});
-  const audioURL = URL.createObjectURL(audioBlob);
-  audiorec.src = audioURL;
-  audioChunks = [];
-}
-
-
-  })
-  .catch(err => {
-    alert("Mic permission deny ho gayi ya error: " + err);
+    } else {
+      mediaRecorder.stop();
+      isRecording = false;
+      textElement.innerText = "🎤 Start Recording";
+      console.log("🛑 Recording Stop", riderId);
+    }
   });
+});
