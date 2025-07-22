@@ -26,12 +26,29 @@ addRider.addEventListener("click", () => {
   newRider.id = `ridernumber-${idToUse}`;
   console.log("Added:", newRider.id);
 
-  // newRider.innerHTML = `
-  //   <button id="recordBtn">
-  //     <img src="https://img.freepik.com/premium-vector/rider-logo-with-concept-men-using-helmets_811548-166.jpg" height="200" width="200" />
-  //   </button>
-  //   <button class="rem-btn">Remove Rider <i class="fa-solid fa-user-minus"></i></button>
-  // `;
+  newRider.innerHTML = `
+    <button class = "recordBtn">
+    <p id="rec_text"> 🎤 Start Recording </p>
+    </button>
+    <button class="rem-btn">Remove Rider <i class="fa-solid fa-user-minus"></i></button>
+  `;
+
+    setTimeout(() => {
+      let elementBtn = document.getElementById(`ridernumber-${idToUse}`);
+      let recordBtn = document.getElementById('rec_text');
+      let rembtn = document.getElementsByClassName('rem-btn');
+
+    const sharingElement = new CustomEvent("receiving_recordBtn", {
+      detail: {
+        element: elementBtn,
+        element1: recordBtn,
+        element2: rembtn,
+        riderId: idToUse,
+        childElement: true,
+      }
+    });
+    document.dispatchEvent(sharingElement);
+  }, 1000);
 
   const removeRider = newRider.querySelector(".rem-btn");
   removeRider.addEventListener("click", () => {
